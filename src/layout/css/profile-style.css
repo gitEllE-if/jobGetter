@@ -1,0 +1,24 @@
+.profile {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.my__events{
+    list-style: none;
+}
+.my__events-link{
+    display: flex;
+    margin: 10px 0;
+    align-items: center;
+}
+.my__events-svg{
+    fill: #959595;
+    padding-right: 10px;
+
+}
+.title{
+
+}

@@ -1,0 +1,59 @@
+{
+  "name": "job_getter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "npm run cp && vue-cli-service serve",
+    "build": "npm run cp && vue-cli-service build && (cd server && npm install)",
+    "lint": "vue-cli-service lint",
+    "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm run build ; fi ",
+    "start": "cd server && npm start",
+    "cp": "node cp.js"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/vue-fontawesome": "^2.0.6",
+    "axios": "^0.24.0",
+    "core-js": "^3.6.5",
+    "crypto-js": "^4.1.1",
+    "vue": "^2.6.11",
+    "vue-frag": "^1.3.1",
+    "vue-html2pdf": "^1.8.0",
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2",
+    "vuex-persist": "^3.1.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

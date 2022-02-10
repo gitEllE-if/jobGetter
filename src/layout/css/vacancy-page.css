@@ -1,0 +1,121 @@
+.vacancy-page {
+  font-family: 'raleway', 'arial', sans-serif;
+  margin:50px 100px;
+}
+
+.vacancy-page .font-bold {
+  font-family: 'montserrat', 'arial', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  color: #555;
+  letter-spacing: -0.3px;
+  padding: 25px 0 0 0;
+  display: block;
+}
+
+.vacancy-page .inner-cnt {
+  padding: 10px 0;
+}
+
+.vacancy-page .pre-lines {
+  white-space: pre-line;
+}
+
+.vacancy-page h2 {
+  margin: 10px 0;
+  font-size: 30px;
+  font-weight: 600;
+  font-style: normal;
+  margin-bottom: 10px;
+  color: #555555;
+}
+
+.vacancy-page h3 {
+  margin: 10px 0;
+  font-family: 'montserrat', 'arial', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+  color: #555555;
+}
+
+.vacancy-page .name-company {
+  margin: 35px 0;
+  font-size: 26px;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 10px;
+  color: #0088ad;
+}
+
+.vacancy-page .text {
+  margin: 10px 0;
+  font-family: 'montserrat', 'arial', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  color: #555;
+  letter-spacing: -0.3px;
+  padding: 5px 0 0 0;
+}
+
+.vacancy-page .text .publish-info {
+  color: #8c8c8c;
+  font-size: 0.8rem;
+}
+
+.vacancy-page .margin-top-30 {
+  margin-top: 30px;
+}
+
+.vacancy-page .company {
+  display: flex;
+  max-width: 700px;
+  justify-content: space-between;
+}
+
+.vacancy-page .company .block-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.vacancy-page .company .block-right .logo-image {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.vacancy-page-url {
+  padding: 5px 30px;
+  border: 0;
+  background-color: #0088ad;
+  color: white;
+  font-family: 'raleway', 'arial', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.vacancy-page-url:hover{
+  background-color: #00b0e0;
+}
+
+.vacancy-page .provider{
+  color: #8c8c8c;
+  font-size: 0.8rem;
+  margin-left: 20px;
+}
+
+@media (max-width:540px) {
+
+  .vacancy-page {
+    margin: 50px 50px;
+  }
+}
+
+@media (max-width:480px) {
+
+  .vacancy-page {
+    margin: 50px 20px;
+  }
+}
