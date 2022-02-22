@@ -112,6 +112,9 @@ export default {
     };
   },
   components: { ItemsList, Header, Footer, FontAwesomeIcon },
+  mounted() {
+    this.sortedItems = this.items;
+  },
   methods: {
     sortChange(event) {
       const idx = event.target.options.selectedIndex;

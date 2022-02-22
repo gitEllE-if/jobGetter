@@ -5,7 +5,7 @@ let token = localStorage.tokenAuth || null;
 function sendRequest() {
     const axiosSettings = {
         headers: {
-            'Content-Type': 'application/json'
+            'Accept': 'application/json'
         },
         crossdomain: true
     }

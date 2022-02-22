@@ -9,6 +9,8 @@
 export default {
   name: 'App',
 
-  data: () => ({}),
+  mounted() {
+    this.$store.dispatch("getCurrency");
+  }
 };
 </script>

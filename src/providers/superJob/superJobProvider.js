@@ -2,11 +2,13 @@ import { Provider } from '@domain/Provider.js';
 import { Vacancy } from '@domain/Vacancy.js';
 import { instance as api } from "@api";
 import { CITY, PROFESSION } from './ catalog';
+import { URL_SUPERJOB, HEADER_SUPERJOB } from '@constants';
+import store from '@store';
 
 export class SuperJobProvider extends Provider {
     static name = 'superJob';
-    static _url = 'https://api.superjob.ru/2.0/';
-    static _header = {'X-Api-App-Id': 'v3.r.135601008.45261558155cd62d2442ddf23443bce73cb1b592.cc8935b587ce50fb47744fd800d93921505b98e8'};
+    static _url = URL_SUPERJOB;
+    static _header = HEADER_SUPERJOB;
 
     find(filter) {
         return api.get('/provider', {headers: {
@@ -43,11 +45,24 @@ export class SuperJobProvider extends Provider {
 
     convertVacancyResponse(item) {
         let payment = '';
+        let payment_from_rub = item.payment_from;
+        let payment_to_rub = item.payment_to;
+        const currency = item.currency ? item.currency.toUpperCase() : null;
         if (item.payment_from || item.payment_to){
             payment += item.payment_from ? `[${item.payment_from},` : '[,';
             payment += item.payment_to ? `${item.payment_to}]` : ')';
         } else {
             payment = null;
+        }
+        if (currency && currency !== 'RUB') {
+            if (item.payment_from) {
+                payment_from_rub = item.payment_from * store.state.currency[currency]?.Value;
+                payment_from_rub = payment_from_rub ? payment_from_rub.toFixed(2) : payment_from_rub;
+            }
+            if (item.payment_to) {
+                payment_to_rub = item.payment_to * store.state.currency[currency]?.Value;
+                payment_to_rub = payment_to_rub ? payment_to_rub.toFixed(2) : payment_to_rub;
+            }
         }
         return new Vacancy(
             SuperJobProvider.name,
@@ -57,7 +72,9 @@ export class SuperJobProvider extends Provider {
             payment,
             item.payment_from,
             item.payment_to,
-            item.currency ? item.currency.toUpperCase() : null,
+            currency,
+            payment_from_rub,
+            payment_to_rub,
             new Date(item.date_published * 1000).toISOString(),
             item.town.title,
             item.candidat,

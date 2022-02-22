@@ -2,7 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersistence from 'vuex-persist';
 import { encrypt, decrypt } from '@utils/crypto.js';
-import { instanceAuth as api } from '@api';
+import { instanceAuth as api, instance as apiGet } from '@api';
+import { URL_CURRENCY, DEFAULT_CURRENCY } from '@constants';
 
 Vue.use(Vuex);
 
@@ -11,7 +12,8 @@ export default new Vuex.Store({
         token: null,
         userLogin: 'unknown',
         user: null,
-        vacancies: []
+        vacancies: [],
+        currency: null
     },
     mutations: {
         setToken(state, token) {
@@ -28,6 +30,9 @@ export default new Vuex.Store({
         },
         delVacancy(state, idx) {
             state.vacancies.splice(idx, 1);
+        },
+        setCurrency(state, newCurrency) {
+            state.currency = newCurrency;
         }
     },
     actions: {
@@ -153,6 +158,24 @@ export default new Vuex.Store({
                 }
             } catch (err) {
                 console.log("==> change vacancy failure " + err);
+            }
+        },
+        async getCurrency({ commit }){
+            try {
+                const res = await apiGet.get(URL_CURRENCY);
+                const { Valute } = res.data;
+                if (res?.requesr?.status == 200) {
+                    commit('setCurrency', Valute);
+                    return Valute;
+                }
+                return null;
+            } catch (err) {
+                console.log(`==> get currency failure ` + err);
+                return null;
+            } finally {
+                if (!this.state.currency) {
+                    commit('setCurrency', DEFAULT_CURRENCY);
+                }
             }
         }
     },

@@ -18,6 +18,7 @@ module.exports = {
         config.resolve.alias.set('@views', path.join(__dirname, 'src', 'views'));
         config.resolve.alias.set('@components', path.join(__dirname, 'src', 'components'));
         config.resolve.alias.set('@utils', path.join(__dirname, 'src', 'utils'));
+        config.resolve.alias.set('@constants', path.join(__dirname, 'src', 'constants'));
     },
 
     productionSourceMap: false

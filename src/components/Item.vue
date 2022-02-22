@@ -98,6 +98,9 @@
             <div class="vacancy-salary">
               {{ salary }} <span>{{ currency }}</span>
             </div>
+            <div class="vacancy-salary" v-if="salary_rub">
+              {{ salary_rub }} <span>RUB</span>
+            </div>
             <a :href="item.url" class="vacancy-url">перейти >></a>
           </div>
         </div>
@@ -155,6 +158,17 @@ export default {
         str = this.item.salary_from ? this.item.salary_from : "";
         str += this.item.salary_from && this.item.salary_to ? "-" : "";
         str += this.item.salary_to ? this.item.salary_to : "";
+      }
+      return str;
+    },
+    salary_rub: function () {
+      if (!this.currency || this.currency === ' RUB')
+        return null;
+      let str = "";
+      if (this.item.salary) {
+        str = this.item.salary_from_rub ? this.item.salary_from_rub : "";
+        str += this.item.salary_from_rub && this.item.salary_to_rub ? "-" : "";
+        str += this.item.salary_to_rub ? this.item.salary_to_rub : "";
       }
       return str;
     },

@@ -11,14 +11,14 @@ function salaryHandler(from, to, replace) {
 }
 
 export function descendingSalaryCompare(a, b) {
-    let a_salary = salaryHandler(a.salary_from, a.salary_to, 0);
-    let b_salary = salaryHandler(b.salary_from, b.salary_to, 0);
+    let a_salary = salaryHandler(a.salary_from_rub, a.salary_to_rub, 0);
+    let b_salary = salaryHandler(b.salary_from_rub, b.salary_to_rub, 0);
     return (b_salary - a_salary);
 }
 
 export function ascendingSalaryCompare(a, b) {
-    let a_salary = salaryHandler(a.salary_from, a.salary_to, Infinity);
-    let b_salary = salaryHandler(b.salary_from, b.salary_to, Infinity);
+    let a_salary = salaryHandler(a.salary_from_rub, a.salary_to_rub, Infinity);
+    let b_salary = salaryHandler(b.salary_from_rub, b.salary_to_rub, Infinity);
     return (a_salary - b_salary);
 }
 

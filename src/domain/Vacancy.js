@@ -1,5 +1,6 @@
 export class Vacancy {
     constructor(provider, origin_id, name, logo_url, salary, salary_from, salary_to, currency,
+        salary_from_rub, salary_to_rub,
         published_at, area, requirement, responsibility, url, employer_name, description, schedule,
         experience, no_experience, remote, pinned) {
         this.provider = provider;
@@ -10,6 +11,8 @@ export class Vacancy {
         this.salary_from = salary_from;
         this.salary_to = salary_to;
         this.currency = currency;
+        this.salary_from_rub = salary_from_rub;
+        this.salary_to_rub = salary_to_rub;
         this.published_at = published_at;
         this.area = area;
         this.requirement = requirement;

@@ -2,11 +2,13 @@ import { Provider } from '@domain/Provider.js';
 import { Vacancy } from '@domain/Vacancy.js';
 import { instance as api } from "@api";
 import { CITY, PROFESSION } from './ catalog';
+import { URL_HH, HEADER_HH } from '@constants';
+import store from '@store';
 
 export class HHprovider extends Provider {
     static name = 'hh';
-    static _url = 'https://api.hh.ru/';
-    static _header = { 'HH-User-Agent': 'api-test-agent' };
+    static _url = URL_HH;
+    static _header = HEADER_HH;
 
     find(filter) {
         api.interceptors.request.use(config => {
@@ -76,11 +78,24 @@ export class HHprovider extends Provider {
                 salary += item.salary.from ? `[${item.salary.from},` : '[,';
                 salary += item.salary.to ? `${item.salary.to}]` : ')';
                 currency = item.salary.currency;
+                currency = currency === 'RUR' ? 'RUB' : currency,
                 salary_from = item.salary.from;
                 salary_to = item.salary.to;
             }
             else {
                 salary = null;
+            }
+            let salary_from_rub = salary_from;
+            let salary_to_rub = salary_to;
+            if (currency && currency !== 'RUB') {
+                if (salary_from) {
+                    salary_from_rub = salary_from * store.state.currency[currency]?.Value;
+                    salary_from_rub = salary_from_rub ? salary_from_rub.toFixed(2) : salary_from_rub;
+                }
+                if (salary_to) {
+                    salary_to_rub = salary_to * store.state.currency[currency]?.Value;
+                    salary_to_rub = salary_to_rub ? salary_to_rub.toFixed(2) : salary_to_rub;
+                }
             }
             return new Vacancy(
                 HHprovider.name,
@@ -90,7 +105,9 @@ export class HHprovider extends Provider {
                 salary,
                 salary_from,
                 salary_to,
-                currency === 'RUR' ? 'RUB' : currency,
+                currency,
+                salary_from_rub,
+                salary_to_rub,
                 item.published_at,
                 item.area.name,
                 item.snippet.requirement ? item.snippet.requirement.replace(/[<highlighttext>|</highlighttext>]/g, '') : null,
