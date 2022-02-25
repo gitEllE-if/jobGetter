@@ -1,0 +1,43 @@
+export const CITIES = [
+    { text: 'Москва', value: 'Moscow', text_opt: 'Москве', selected: false },
+    { text: 'Санкт-Петербург', value: 'Saint_Petersburg', text_opt: 'Санкт-Петербурге', selected: false },
+    { text: 'Новосибирск', value: 'Novosibirsk', text_opt: 'Новосибирске', selected: false },
+    { text: 'Ектеринбург', value: 'Ekterinburg', text_opt: 'Екатеринбурге', selected: false },
+    { text: 'Казань', value: 'Kazan', text_opt: 'Казани', selected: false },
+    { text: 'Красноярск', value: 'Krasnoyarsk', text_opt: 'Красноярске', selected: false },
+    { text: 'Челябинск', value: 'Chelyabinsk', text_opt: 'Челябинске', selected: false },
+    { text: 'Омск', value: 'Omsk', text_opt: 'Омске', selected: false },
+    { text: 'Самара', value: 'Samara', text_opt: 'Самаре', selected: false },
+    { text: 'Уфа', value: 'Ufa', text_opt: 'Уфе', selected: false }
+];
+
+export const PROFESSIONS = [
+    { text: 'Программирование, разработка', value: 'development', selected: false },
+    { text: 'web-разработка', value: 'wed', selected: false },
+    { text: 'Верстка', value: ' layout', selected: false },
+    { text: 'Игровое ПО / Геймдев', value: 'gamedev', selected: false },
+    { text: 'Администратор баз данных', value: 'database_administrator', selected: false },
+    { text: 'Тестирование, QA', value: 'testing', selected: false },
+    { text: 'Аналитика', value: 'analytics', selected: false },
+    { text: 'Кибербезопасность', value: 'cybersecurity', selected: false },
+    { text: 'Оптимизация, SEO', value: 'seo', selected: false },
+    { text: 'Контент', value: 'content', selected: false },
+    { text: 'Системный администратор', value: 'system_administrator', selected: false },
+    { text: 'Дизайн', value: 'design', selected: false },
+    { text: 'Компьютерная анимация, мультимедиа', value: 'multimedia', selected: false },
+    { text: 'Передача данных и доступ в интернет', value: 'data_transmission', selected: false },
+    { text: 'Банковское ПО', value: 'banking_software', selected: false },
+    { text: 'Сетевые технологии', value: 'network_technologies', selected: false },
+    { text: 'Системная интеграция', value: 'system_integration', selected: false },
+    { text: 'Телекоммуникации и связь', value: 'telecommunications', selected: false },
+    { text: 'CRM системы', value: 'crm', selected: false},
+    { text: 'Сотовые, беспроводные технологии', value: 'wireless_technologies', selected: false },
+    { text: 'Системы автоматизированного проектирования', value: 'cad_system', selected: false },
+    { text: 'Системы управления предприятием (ERP)', value: 'erp', selected: false },
+    { text: 'Техническая поддержка', value: 'technical_support', selected: false },
+    { text: 'Электронная коммерция', value: 'ecommerce', selected: false },
+    { text: 'Управление проектами', value: 'project_management', selected: false },
+    { text: 'Менеджмент продукта', value: 'product_management', selected: false },
+    { text: 'Маркетинг', value: 'marketing', selected: false },
+    { text: 'Начало карьеры, мало опыта', value: 'beginner', selected: false }
+]

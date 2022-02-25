@@ -1,29 +1,49 @@
 <template>
-  <div class="searchinput">
-    <form class="searchWrap">
+  <div class="search">
+    <form class="search__form">
       <input
-          placeholder="Профессия, должность"
+          class="search__input"
+          placeholder="ключевое слово"
           type="text"
           v-model="vacancyText"
       />
-      <button class="button-search" @click="findItems($event)">
+      <select v-model="city" class="search__select">
+        <option disabled selected value=''>город</option>
+        <option v-for="city in cityArr" :value="city.text" :key="city.value">
+          {{ city.text }}
+        </option>
+        <option value=''>-</option>
+      </select>
+       <select v-model="profession" class="search__select">
+        <option disabled selected value=''>профессия</option>
+        <option v-for="prof in professionArr" :value="prof.text" :key="prof.value">
+          {{ prof.text }}
+        </option>
+        <option value=''>-</option>
+      </select>
+      <button class="search__button" @click="findItems($event)">
         Найти работу
       </button>
     </form>
   </div>
 </template>
 <script>
-import {mapGetters} from "vuex";
-import {PROVIDERS} from "../providers";
-import {SearchFilter} from "../domain/SearchFilter";
-import {descendingTimeCompare} from "../utils/sortHelper";
+import { mapGetters } from "vuex";
+import { PROVIDERS } from "../providers";
+import { SearchFilter } from "../domain/SearchFilter";
+import { descendingTimeCompare } from "../utils/sortHelper";
 import { instanceAuth as api } from "@api";
+import { CITIES, PROFESSIONS } from "@constants";
 
 export default {
   name: "Search",
   data() {
     return {
+      cityArr: CITIES,
+      professionArr: PROFESSIONS,
       vacancyText: "",
+      city: this.selectedCity,
+      profession: this.selectedProfession
     };
   },
   props: {
@@ -42,8 +62,8 @@ export default {
       try {
         const searchResult = [];
         const filter = SearchFilter.byText(this.vacancyText);
-        filter.city = this.selectedCity;
-        filter.profession = this.selectedProfession;
+        filter.city = this.city;
+        filter.profession = this.profession;
         for (let provider in PROVIDERS){
           const res = PROVIDERS[provider].find(filter);
           if (res){

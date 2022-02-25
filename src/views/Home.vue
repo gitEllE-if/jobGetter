@@ -18,9 +18,9 @@
         <div class="profession-block-name">
           <h2 class="profession-block-header">Работа по профессиям</h2>
           <ul class="profession-block-multiple">
-            <li  v-for="prof in professionArr" :key="prof.name" class="profession-multiple-item">
-              <a @click="selectProfession(prof.name)">
-                <span :class="{ selected: prof.selected }">{{ prof.name }}</span>
+            <li  v-for="prof in professionArr" :key="prof.value" class="profession-multiple-item">
+              <a @click="selectProfession(prof.text)">
+                <span :class="{ selected: prof.selected }">{{ prof.text }}</span>
               </a>
             </li>
           </ul>
@@ -29,9 +29,9 @@
         <div class="profession-block-city">
           <h2 class="profession-block-header">Работа в других городах</h2>
           <ul class="profession-block-city-multiple">
-            <li  v-for="city in cityArr" :key="city.name" class="profession-multiple-item">
-              <a @click="selectCity(city.name)">
-                <span :class="{ selected: city.selected }">Работа в {{ city.text }}</span>
+            <li  v-for="city in cityArr" :key="city.value" class="profession-multiple-item">
+              <a @click="selectCity(city.text)">
+                <span :class="{ selected: city.selected }">Работа в {{ city.text_opt }}</span>
               </a>
             </li>
           </ul>
@@ -56,54 +56,15 @@ import Header from "@components/Header.vue";
 import Footer from "@components/Footer.vue";
 import { mapGetters } from "vuex";
 import Search from "../components/Search";
+import { CITIES, PROFESSIONS } from "@constants";
 
 export default {
   name: "Home",
   components: { Search, ItemsList, Header, Footer },
   data() {
     return {
-      cityArr: [
-        {name: 'Москва', text: 'Москве', selected: false},
-        {name: 'Санкт-Петербург', text: 'Санкт-Петербурге', selected: false},
-        {name: 'Новосибирск', text: 'Новосибирске', selected: false},
-        {name: 'Ектеринбург', text: 'Екатеринбурге', selected: false},
-        {name: 'Казань', text: 'Казани', selected: false},
-        {name: 'Красноярск', text: 'Красноярске', selected: false},
-        {name: 'Челябинск', text: 'Челябинске', selected: false},
-        {name: 'Омск', text: 'Омске', selected: false},
-        {name: 'Самара', text: 'Самаре', selected: false},
-        {name: 'Уфа', text: 'Уфе', selected: false},
-      ],
-      professionArr: [
-        {name: 'Программирование, разработка', selected: false},
-        {name: 'web-разработка', selected: false},
-        {name: 'Верстка', selected: false},
-        {name: 'Игровое ПО / Геймдев', selected: false},
-        {name: 'Администратор баз данных', selected: false},
-        {name: 'Тестирование, QA', selected: false},
-        {name: 'Аналитика', selected: false},
-        {name: 'Кибербезопасность', selected: false},
-        {name: 'Оптимизация, SEO', selected: false},
-        {name: 'Контент', selected: false},
-        {name: 'Системный администратор', selected: false},
-        {name: 'Дизайн', selected: false},
-        {name: 'Компьютерная анимация, мультимедиа', selected: false},
-        {name: 'Передача данных и доступ в интернет', selected: false},
-        {name: 'Банковское ПО', selected: false},
-        {name: 'Сетевые технологии', selected: false},
-        {name: 'Системная интеграция', selected: false},
-        {name: 'Телекоммуникации и связь', selected: false},
-        {name: 'CRM системы', selected: false},
-        {name: 'Сотовые, беспроводные технологии', selected: false},
-        {name: 'Системы автоматизированного проектирования', selected: false},
-        {name: 'Системы управления предприятием (ERP)', selected: false},
-        {name: 'Техническая поддержка', selected: false},
-        {name: 'Электронная коммерция', selected: false},
-        {name: 'Управление проектами', selected: false},
-        {name: 'Менеджмент продукта', selected: false},
-        {name: 'Маркетинг', selected: false},
-        {name: 'Начало карьеры, мало опыта', selected: false},
-      ],
+      cityArr: CITIES,
+      professionArr: PROFESSIONS,
       selectedCity: "",
       selectedProfession: ""
     };
@@ -123,11 +84,11 @@ export default {
     },
     selectCity(newCity){
       this.selectedCity = newCity;
-      this.cityArr.forEach((city) => { city.selected = city.name === newCity ? true : false });
+      this.cityArr.forEach((city) => { city.selected = city.text === newCity ? true : false });
     },
     selectProfession(newProfession){
       this.selectedProfession = newProfession;
-      this.professionArr.forEach((prof) => { prof.selected = prof.name === newProfession ? true : false });
+      this.professionArr.forEach((prof) => { prof.selected = prof.text === newProfession ? true : false });
     },
     resetCity(){
       this.selectedCity = '';

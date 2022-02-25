@@ -1,5 +1,6 @@
 @import "item-style.css";
 @import "account-style.css";
+@import "search-style.css";
 @import "profile-style.css";
 @import "vacancies-list-style.css";
 @import "vacancy-page.css";
@@ -253,57 +254,6 @@ header {
 
 .form-search-label {
     display: inline-block;
-}
-
-.searchinput {
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.searchWrap {
-    display: flex;
-    height: 48px;
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.searchWrap input {
-    height: inherit;
-    padding-right: 115px;
-    padding-left: 16px;
-    border: none;
-    outline: none;
-    opacity: 0.9;
-    width: 360px;
-    font-family: 'raleway', 'arial', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.searchWrap button {
-    height: inherit;
-    padding: 0 13px;
-    border: 0;
-    background: none;
-    border-left: 1px solid #e6e6e6;
-    background-color: #00b0e0;
-}
-
-.button-search {
-    color: white;
-    font-family: 'raleway', 'arial', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    font-style: normal;
-}
-
-.searchWrap button:hover {
-    cursor: pointer;
-    background-color: #0088ad;
 }
 
 .tagline {
@@ -799,10 +749,6 @@ header {
 
     .main-header-list li {
         margin-right: 0px;
-    }
-
-    .searchWrap input {
-        padding-right: 0px;
     }
 
     .tagline-txt {
