@@ -41,21 +41,10 @@ export default {
     return {
       cityArr: CITIES,
       professionArr: PROFESSIONS,
-      vacancyText: "",
-      city: this.selectedCity,
-      profession: this.selectedProfession
+      vacancyText: ""
     };
   },
-  props: {
-    selectedCity: {
-      type: String,
-      default: ""
-    },
-    selectedProfession: {
-      type: String,
-      default: ""
-    }
-  },
+  props: {},
   methods: {
     async findItems(event) {
       event.preventDefault();
@@ -90,8 +79,16 @@ export default {
     },
   },
   computed: {
+    city: {
+      get() { return this.$store.getters['city_getter']},
+      set( newCity ) {this.$store.commit( 'setCity', newCity )}
+    },
+    profession: {
+      get() { return this.$store.getters['profession_getter']},
+      set( newProfession ) {this.$store.commit( 'setProfession', newProfession )}
+    },
     ...mapGetters({ userLogin: "userLogin_getter" }),
-    ...mapGetters({ items: "vacancies_getter" }),
+    ...mapGetters({ items: "vacancies_getter" })
   }
 };
 </script>

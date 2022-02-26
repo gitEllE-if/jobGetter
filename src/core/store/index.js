@@ -13,7 +13,9 @@ export default new Vuex.Store({
         userLogin: 'unknown',
         user: null,
         vacancies: [],
-        currency: null
+        currency: null,
+        city: '',
+        profession: ''
     },
     mutations: {
         setToken(state, token) {
@@ -33,6 +35,12 @@ export default new Vuex.Store({
         },
         setCurrency(state, newCurrency) {
             state.currency = newCurrency;
+        },
+        setCity(state, newCity) {
+            state.city = newCity;
+        },
+        setProfession(state, newProfession) {
+            state.profession = newProfession;
         }
     },
     actions: {
@@ -183,6 +191,8 @@ export default new Vuex.Store({
         userLogin_getter: state => state.userLogin,
         user_getter: state => state.user,
         vacancies_getter: state => state.vacancies,
+        city_getter: state => state.city,
+        profession_getter: state => state.profession,
         vacancyById_getter: state => (id) => { return state.vacancies.find(vacancy => vacancy.origin_id == id) },
         vacanciesFavorite_getter: state => { return state.vacancies.filter(vacancy => vacancy.pinned == true) },
         vacanciesFvrtCnt_getter: state => { return state.vacancies.filter(vacancy => vacancy.pinned == true).length }

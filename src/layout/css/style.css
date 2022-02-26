@@ -356,6 +356,22 @@ header {
     font-weight: 600;
     font-style: normal;
     color: #555555;
+    text-align: center;
+}
+
+.section-title__span {
+    font-weight: 400;
+    color: #8c8c8c;
+}
+
+.section-subtitle {
+    font-family: 'raleway', 'arial', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    color: #c7b299;
+    text-align: center;
+    margin-top: 18px;
 }
 
 .section-text {

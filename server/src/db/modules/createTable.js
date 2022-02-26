@@ -85,7 +85,7 @@ module.exports = async (dbConnection) => {
                 area varchar(32),
                 requirement text,
                 responsibility text,
-                url varchar(128) DEFAULT null,
+                url varchar(256) DEFAULT null,
                 employer_name varchar(128) DEFAULT null,
                 description text DEFAULT NULL,
                 schedule varchar(64) DEFAULT NULL,
