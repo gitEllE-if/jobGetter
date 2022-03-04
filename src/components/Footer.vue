@@ -1,37 +1,40 @@
 <template>
-  <footer>
-    <section class="footer-lower">
-      <div class="footer-lower-block">
-        <p>
-          Copyright &copy; 2021
-          <a class="footer-lower-allocated" href="#">GeekJob</a>
-        </p>
-        <a href="#">Политика конфеденциальности</a>
-        <router-link to="/about">О компании</router-link>
-        <a href="#">Вопросы и ответы</a>
-        <a href="#">Поддержка</a>
-      </div>
-      <div class="footer-icon">
-        <a href="#">
-        <font-awesome-icon :icon="['fab', 'instagram']" class="social-icon"/>
+  <footer class="footer">
+    <div class="footer-nav">
+      <p class="footer-nav__p">
+        Copyright &copy; {{ year }}
+        <a class="footer-logo" href="/">Job-getter</a>
+      </p>
+      <a href="#">Политика конфеденциальности</a>
+      <router-link to="/about">О компании</router-link>
+      <a href="#">Вопросы и ответы</a>
+      <a href="#">Поддержка</a>
+    </div>
+    <div class="footer-icon">
+      <div class="footer-icon__title">Вакансии предоставлены с сайтов:</div>
+      <div class="footer-icon__items">
+        <a href="https://hh.ru">
+          <svg-provider-1 class="footer-icon__svg" />
         </a>
-        <a href="#">
-          <font-awesome-icon :icon="['fab', 'facebook']" class="social-icon"/>
-        </a>
-        <a href="#">
-          <font-awesome-icon :icon="['fab', 'vk']" class="social-icon"/>
-        </a>
-        <a href="#">
-          <font-awesome-icon :icon="['fab', 'odnoklassniki']" class="social-icon"/>
+        <a href="https://superjob.ru">
+          <svg-provider-2 class="footer-icon__svg footer-icon__svg__small" />
         </a>
       </div>
-    </section>
+    </div>
   </footer>
 </template>
 
 <script>
+import SvgProvider1 from "@components/svg/SvgProvider1";
+import SvgProvider2 from "@components/svg/SvgProvider2";
 export default {
-  name: "Footer"
+  components: { SvgProvider1, SvgProvider2 },
+  name: "Footer",
+  computed: {
+    year: () => {
+      return new Date().getFullYear();
+    },
+  },
 };
 </script>
 
