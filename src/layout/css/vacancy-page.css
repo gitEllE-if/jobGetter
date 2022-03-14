@@ -1,28 +1,9 @@
 .vacancy-page {
   font-family: 'raleway', 'arial', sans-serif;
-  margin:50px 100px;
+  margin: 50px 100px;
 }
 
-.vacancy-page .font-bold {
-  font-family: 'montserrat', 'arial', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  font-style: normal;
-  color: #555;
-  letter-spacing: -0.3px;
-  padding: 25px 0 0 0;
-  display: block;
-}
-
-.vacancy-page .inner-cnt {
-  padding: 10px 0;
-}
-
-.vacancy-page .pre-lines {
-  white-space: pre-line;
-}
-
-.vacancy-page h2 {
+.title__h2 {
   margin: 10px 0;
   font-size: 30px;
   font-weight: 600;
@@ -31,7 +12,7 @@
   color: #555555;
 }
 
-.vacancy-page h3 {
+.title__h3 {
   margin: 10px 0;
   font-family: 'montserrat', 'arial', sans-serif;
   font-size: 20px;
@@ -40,7 +21,7 @@
   color: #555555;
 }
 
-.vacancy-page .name-company {
+.vacancy-company__name {
   margin: 35px 0;
   font-size: 26px;
   font-weight: 400;
@@ -49,7 +30,7 @@
   color: #0088ad;
 }
 
-.vacancy-page .text {
+.vacancy-company__area {
   margin: 10px 0;
   font-family: 'montserrat', 'arial', sans-serif;
   font-size: 16px;
@@ -60,32 +41,49 @@
   padding: 5px 0 0 0;
 }
 
-.vacancy-page .text .publish-info {
+.vacancy-text {
+  margin: 10px 0;
+  font-family: 'montserrat', 'arial', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  color: #555;
+}
+
+.vacancy-text p{
+  margin-bottom: 8px;
+}
+
+.vacancy-text__publish {
   color: #8c8c8c;
   font-size: 0.8rem;
 }
 
-.vacancy-page .margin-top-30 {
-  margin-top: 30px;
+.vacancy-info {
+  margin: 20px 0;
+  font-family: 'montserrat', 'arial', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #c7b299;
 }
 
-.vacancy-page .company {
+.vacancy-company {
   display: flex;
   max-width: 700px;
   justify-content: space-between;
 }
 
-.vacancy-page .company .block-left {
+.vacancy-company__left {
   display: flex;
   flex-direction: column;
 }
 
-.vacancy-page .company .block-right .logo-image {
+.vacancy-company__logo {
   max-width: 150px;
   max-height: 100px;
 }
 
-.vacancy-page-url {
+.vacancy-url {
   padding: 5px 30px;
   border: 0;
   background-color: #0088ad;
@@ -96,11 +94,11 @@
   font-style: normal;
 }
 
-.vacancy-page-url:hover{
+.vacancy-url:hover{
   background-color: #00b0e0;
 }
 
-.vacancy-page .provider{
+.vacancy-provider{
   color: #8c8c8c;
   font-size: 0.8rem;
   margin-left: 20px;

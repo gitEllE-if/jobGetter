@@ -1,43 +1,39 @@
 <template>
-  <div class="container">
+  <div class="container-main">
     <header>
       <Header />
     </header>
     <main>
-      <div class="vacancy-page">
-        <div class="page inner-cnt">
-          <h2>{{ vacancy.name }}</h2>
-          <h3 v-if="vacancy.salary">
+      <div class="container">
+        <div class="vacancy-page">
+          <h2 class="title__h2">{{ vacancy.name }}</h2>
+          <h3 v-if="vacancy.salary" class="title__h3">
             <span v-if="vacancy.salary_from">от {{ vacancy.salary_from }} </span>
             <span v-if="vacancy.salary_to">до {{ vacancy.salary_to }} </span>
             <span v-if="vacancy.currency">{{ vacancy.currency }}</span>
           </h3>
-          <div class="company">
-            <div class="block-left">
-              <div class="name-company">{{ vacancy.employer_name }}</div>
-              <div class="text">{{ vacancy.area }}</div>
+          <div class="vacancy-company">
+            <div class="vacancy-company__left">
+              <div class="vacancy-company__name">{{ vacancy.employer_name }}</div>
+              <div class="vacancy-company__area">{{ vacancy.area }}</div>
             </div>
-            <div class="block-right">
+            <div class="vacancy-company__right">
               <a :href="vacancy.url">
-                <img class="logo-image" :src="`${vacancy.logo_url ? vacancy.logo_url : ''}`" alt="">
+                <img class="vacancy-company__logo" :src="`${vacancy.logo_url ? vacancy.logo_url : ''}`" alt="">
               </a>
             </div>
           </div>
-          
-          <p class="text margin-top-30" v-if="vacancy.experience">Требуемый опыт работы: {{ vacancy.experience.toLowerCase() }}</p>
-          <p class="text">{{ vacancy.schedule }}</p>
-          <div>
-            <p class="text" v-html="vacancy.description">
-            </p>
-            <p class="text margin-top-30">
-              <i class="publish-info">Вакансия опубликована {{ vacancy.published_at.substring(0, 10) }} в городе {{ vacancy.area }}</i>
-            </p>
-          </div>
+          <p class="vacancy-info" v-if="vacancy.experience">Требуемый опыт работы: {{ vacancy.experience.toLowerCase() }}</p>
+          <p class="vacancy-info">{{ vacancy.schedule }}</p>
+          <p class="vacancy-text" v-html="vacancy.description"></p>
+          <p class="vacancy-info">
+            <i class="vacancy-text__publish">Вакансия опубликована {{ vacancy.published_at.substring(0, 10) }} в городе {{ vacancy.area }}</i>
+          </p>
+          <a :href="vacancy.url" class="vacancy-url">перейти</a>
+          <span class="vacancy-provider">
+            {{ vacancy.provider }}
+          </span>
         </div>
-        <a :href="vacancy.url" class="vacancy-page-url">перейти</a>
-        <span class="provider">
-          {{ vacancy.provider }}
-        </span>
       </div>
     </main>
     <Footer />
