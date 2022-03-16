@@ -29,7 +29,7 @@ npm start
 ```
 Builds the app for production to the `dist` folder.\
 It correctly bundles in production mode and optimizes the build for the best performance.
-Open [http://localhost:5050](http://localhost:5005) to view it in the browser.
+Open [http://localhost:5050](http://localhost:5050) to view it in the browser.
 The build is minified and the filenames include the hashes.\
 
 
