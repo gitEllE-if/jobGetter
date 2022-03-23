@@ -5,6 +5,7 @@ export class SearchFilter {
         this.salary = null;
         this.profession = null;
         this.count = 50;
+        this.page = 1;
     }
     static byText(text) {
         let filter = new SearchFilter();

@@ -67,7 +67,7 @@
     border-radius: 50%;
   }
 
-  .vacancy-block-text{
+.vacancy-block-text{
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -155,7 +155,7 @@
     color: #555555;
 }
 
-.vacancy-requirement{
+.vacancy-requirement {
     font-family: 'raleway', 'arial', sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -163,7 +163,7 @@
     color: #555555;
 }
 
-.vacancy-responsibility{
+.vacancy-responsibility {
     font-family: 'raleway', 'arial', sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -171,7 +171,7 @@
     color: #555555;
 }
 
-.vacancy-title{
+.vacancy-title {
     font-family: 'raleway', 'arial', sans-serif;
     font-size: 14px;
     font-weight: 600;
@@ -179,11 +179,11 @@
     color: #eed6b9;
 }
 
-.vacancy-icon-text{
+.vacancy-icon-text {
     color: #eed6b9;
 }
 
-.vacancy-area-time{
+.vacancy-area-time {
     font-family: 'montserrat', 'arial', sans-serif;
     font-size: 12px;
     color: #eed6b9;
@@ -191,27 +191,28 @@
     display: flex;
 }
 
-.vacancy-area-large{
+.vacancy-area-large {
     margin-right: 30px;
     font-weight: 600;
 }
 
-.vacancy-area{
+.vacancy-area {
     font-family: 'montserrat', 'arial', sans-serif;
     font-size: 10px;
     color: #eed6b9;
 }
 
-.vacancy-bottom{
+.vacancy-bottom {
     display: flex;
     justify-content: space-between;
 }
 
-.vacancy-url{
+.vacancy-bottom .vacancy-url {
     font-family: 'montserrat', 'arial', sans-serif;
     font-size: 12px;
     font-weight: 600;
     color: #eed6b9;
+    background: white;
 }
 
 .vacancy-employer-name {
@@ -238,6 +239,6 @@
     border-radius: 15px;
 }
 
-.noexperience{
+.noexperience {
     background-color: #e0bc85;
 }
