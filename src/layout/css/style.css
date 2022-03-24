@@ -344,14 +344,13 @@ header {
     background-color: #c7b299;
 }
 
-.section-txt {
-    max-width: 760px;
-    min-height: 95px;
-    text-align: center;
-    margin-top: 83px;
+.section-block {
+    display: flex;
+    flex-direction: column;
+   align-items: center;
 }
 
-.section-title {
+.section-block__title {
     font-family: 'raleway', 'arial', sans-serif;
     font-size: 30px;
     font-weight: 600;
@@ -360,12 +359,12 @@ header {
     text-align: center;
 }
 
-.section-title__span {
+.section-block__span {
     font-weight: 400;
     color: #8c8c8c;
 }
 
-.section-subtitle {
+.section-block__subtitle {
     font-family: 'raleway', 'arial', sans-serif;
     font-size: 18px;
     font-weight: 400;
@@ -375,40 +374,26 @@ header {
     margin-top: 18px;
 }
 
-.section-text {
-    font-family: 'montserrat', 'arial', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    font-style: normal;
-    color: #8c8c8c;
-    letter-spacing: -0.3px;
-    margin-top: 24px;
-    padding: 0 5px;
-}
-
-.section-btn {
-    width: 170px;
-    min-height: 50px;
-    background-color: #998675;
+.section-block__button {
+    width: 120px;
+    background-color: white;
     border-radius: 3px;
     outline: none;
-    border: 0;
+    border: 1px solid #00b0e0;
     font-family: 'raleway', 'arial', sans-serif;
     font-size: 14px;
-    font-weight: 800;
-    font-style: normal;
-    text-transform: uppercase;
-    color: #ffffff;
-    box-shadow: inset 0px -3px 0px 0px rgba(115, 99, 87, 0.8);
-    margin-right:10px;
+    color: #00b0e0;
+    margin: 30px 0;
+    padding: 10px 0;
 }
 
-.section-btn:hover {
-    background-color: #aa9583;
+.section-block__button:hover {
+    background-color: #00b0e0;
+    color: white;
     cursor: pointer;
 }
 
-.section-btn:active {
+.section-block__button:active {
     color: #eed6b9;
     cursor: pointer;
     box-shadow: none;

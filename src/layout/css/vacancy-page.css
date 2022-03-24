@@ -50,7 +50,7 @@
   color: #555;
 }
 
-.vacancy-text p{
+.vacancy-text p {
   margin-bottom: 8px;
 }
 
@@ -94,11 +94,11 @@
   font-style: normal;
 }
 
-.vacancy-url:hover{
+.vacancy-url:hover {
   background-color: #00b0e0;
 }
 
-.vacancy-provider{
+.vacancy-page .vacancy-provider {
   color: #8c8c8c;
   font-size: 0.8rem;
   margin-left: 20px;

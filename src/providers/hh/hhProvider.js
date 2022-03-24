@@ -52,6 +52,9 @@ export class HHprovider extends Provider {
         if (filter.profession) {
             url += `&specialization=${PROFESSION[filter.profession]}`;
         }
+        if (filter.page) {
+            url += `&page=${filter.page}`;
+        }
         return url;
     }
 

@@ -15,7 +15,8 @@ export default new Vuex.Store({
         vacancies: [],
         currency: null,
         city: '',
-        profession: ''
+        profession: '',
+        keyword: ''
     },
     mutations: {
         setToken(state, token) {
@@ -30,6 +31,9 @@ export default new Vuex.Store({
         setVacancies(state, newVacancies) {
             state.vacancies = newVacancies;
         },
+        addVacancies(state, newVacancies) {
+            state.vacancies = [...state.vacancies, ...newVacancies];
+        },
         delVacancy(state, idx) {
             state.vacancies.splice(idx, 1);
         },
@@ -41,6 +45,9 @@ export default new Vuex.Store({
         },
         setProfession(state, newProfession) {
             state.profession = newProfession;
+        },
+        setKeyword(state, newKeyword) {
+            state.keyword = newKeyword;
         }
     },
     actions: {
@@ -136,6 +143,14 @@ export default new Vuex.Store({
                 return null;
             }
         },
+        async updateVacancies({ commit }, newVacancies) {
+            try {
+                commit('addVacancies', newVacancies);
+            } catch (err) {
+                console.log(`==> add vacancies failure ` + err);
+                return null;
+            }
+        },
         async delVacancy({ commit }, id) {
             try {
                 const res = await api.delete("/vacancy/" + id);
@@ -193,6 +208,7 @@ export default new Vuex.Store({
         vacancies_getter: state => state.vacancies,
         city_getter: state => state.city,
         profession_getter: state => state.profession,
+        keyword_getter: state => state.keyword,
         vacancyById_getter: state => (id) => { return state.vacancies.find(vacancy => vacancy.origin_id == id) },
         vacanciesFavorite_getter: state => { return state.vacancies.filter(vacancy => vacancy.pinned == true) },
         vacanciesFvrtCnt_getter: state => { return state.vacancies.filter(vacancy => vacancy.pinned == true).length }

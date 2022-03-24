@@ -82,7 +82,7 @@ module.exports = async (dbConnection) => {
                 salary_from_rub real DEFAULT null,
                 salary_to_rub real DEFAULT null,
                 published_at timestamptz,
-                area varchar(32),
+                area varchar(64),
                 requirement text,
                 responsibility text,
                 url varchar(256) DEFAULT null,

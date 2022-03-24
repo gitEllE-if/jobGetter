@@ -5,7 +5,7 @@
         class="search__input"
         placeholder="ключевое слово"
         type="text"
-        v-model="vacancyText"
+        v-model="keyword"
       />
       <select v-model="city" class="search__select">
         <option disabled selected value="">город</option>
@@ -34,7 +34,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { PROVIDERS } from "../providers";
-import { SearchFilter } from "../domain/SearchFilter";
+import { searchFilter } from "../domain/SearchFilter";
 import { descendingTimeCompare } from "../utils/sortHelper";
 import { instanceAuth as api } from "@api";
 import { CITIES, PROFESSIONS } from "@constants";
@@ -44,8 +44,7 @@ export default {
   data() {
     return {
       cityArr: CITIES,
-      professionArr: PROFESSIONS,
-      vacancyText: "",
+      professionArr: PROFESSIONS
     };
   },
   props: {},
@@ -54,11 +53,12 @@ export default {
       event.preventDefault();
       try {
         const searchResult = [];
-        const filter = SearchFilter.byText(this.vacancyText);
-        filter.city = this.city;
-        filter.profession = this.profession;
+        searchFilter.text = this.keyword;
+        searchFilter.city = this.city;
+        searchFilter.profession = this.profession;
+        searchFilter.page = 1;
         for (let provider in PROVIDERS) {
-          const res = PROVIDERS[provider].find(filter);
+          const res = PROVIDERS[provider].find(searchFilter);
           if (res) {
             searchResult.push(res);
           }
@@ -95,6 +95,14 @@ export default {
       },
       set(newProfession) {
         this.$store.commit("setProfession", newProfession);
+      },
+    },
+    keyword: {
+      get() {
+        return this.$store.getters["keyword_getter"];
+      },
+      set(newKeyword) {
+        this.$store.commit("setKeyword", newKeyword);
       },
     },
     ...mapGetters({ userLogin: "userLogin_getter" }),

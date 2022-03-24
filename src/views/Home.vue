@@ -55,16 +55,19 @@
             </button>
           </div>
         </section>
-        <section class="vacancies" v-show="items.length" ref="refVacancies">
+        <section class="section-block" v-show="items.length" ref="refVacancies">
           <router-link to="/vacancies_list">
-            <h3 class="section-title">
-              Вакансии<span v-if="city" class="section-title__span">
+            <h3 class="section-block__title">
+              Вакансии<span v-if="city" class="section-block__span">
                 в городе {{ city }}</span
               >
             </h3>
-            <h5 class="section-subtitle" v-if="profession">{{ profession }}</h5>
+            <h5 class="section-block__subtitle" v-if="profession">{{ profession }}</h5>
           </router-link>
           <ItemsList />
+          <button v-if="items.length < 200" class="section-block__button" @click="loadVacancies($event)">
+            загрузить еще
+          </button>
         </section>
       </div>
     </main>
@@ -79,6 +82,10 @@ import Footer from "@components/Footer.vue";
 import { mapGetters } from "vuex";
 import Search from "../components/Search";
 import { CITIES, PROFESSIONS } from "@constants";
+import { PROVIDERS } from "../providers";
+import { searchFilter } from "../domain/SearchFilter";
+import { descendingTimeCompare } from "../utils/sortHelper";
+import { instanceAuth as api } from "@api";
 
 export default {
   name: "Home",
@@ -134,6 +141,34 @@ export default {
       });
       this.profession = "";
     },
+    async loadVacancies(event){
+      event.preventDefault();
+      try {
+        const searchResult = [];
+        searchFilter.text = this.keyword;
+        searchFilter.city = this.city;
+        searchFilter.profession = this.profession;
+        searchFilter.page++;
+        for (let provider in PROVIDERS) {
+          const res = PROVIDERS[provider].find(searchFilter);
+          if (res) {
+            searchResult.push(res);
+          }
+        }
+        Promise.all(searchResult).then(async (vacancies) => {
+          const newVacancies = [].concat(...vacancies);
+          newVacancies.sort(descendingTimeCompare);
+          if (this.userLogin == "unknown") {
+            this.$store.dispatch("updateVacancies", newVacancies);
+          } else {
+            await api.post("/vacancies", newVacancies);
+            await this.$store.dispatch("getVacanciesFromBD");
+          }
+        });
+      } catch (err) {
+        console.log("==> load more vacancies failure " + err);
+      }
+    }
   },
   computed: {
     city: {
@@ -154,6 +189,7 @@ export default {
     },
     ...mapGetters({ userLogin: "userLogin_getter" }),
     ...mapGetters({ items: "vacancies_getter" }),
+    ...mapGetters({ keyword: "keyword_getter" })
   },
   watch: {
     city: function () {

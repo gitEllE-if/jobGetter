@@ -34,6 +34,9 @@ export class SuperJobProvider extends Provider {
         if (filter.profession) {
             url += `&catalogues=${PROFESSION[filter.profession]}`;
         }
+        if (filter.page) {
+            url += `&page=${filter.page}`;
+        }
         return url;
     }
 

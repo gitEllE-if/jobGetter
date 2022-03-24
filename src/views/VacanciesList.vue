@@ -1,82 +1,86 @@
 <template>
-  <div class="container">
+  <div class="container-main">
     <header>
       <Header />
     </header>
-    <main class="vacancies-list">
-      <div class="vacancies-sort">
-        <div class="vacancies-sort-title">Фильтр вакансий</div>
-        <div class="vacancies-sort-item">
-          <div class="sort-item-radio">
-            <input
-              v-model="view"
-              type="radio"
-              id="viewChoice1"
-              name="view"
-              value="small"
-            />
-            <label for="viewChoice1"
-              ><font-awesome-icon :icon="smallIcon"
-            /></label>
+    <main>
+      <div class="container">
+        <div class="vacancies-list">
+          <div class="vacancies-sort">
+            <div class="vacancies-sort-title">Фильтр вакансий</div>
+            <div class="vacancies-sort-item">
+              <div class="sort-item-radio">
+                <input
+                  v-model="view"
+                  type="radio"
+                  id="viewChoice1"
+                  name="view"
+                  value="small"
+                />
+                <label for="viewChoice1">
+                  <font-awesome-icon :icon="smallIcon"
+                /></label>
+              </div>
+              <div class="sort-item-radio">
+                <input
+                  v-model="view"
+                  type="radio"
+                  id="viewChoice2"
+                  name="view"
+                  value="large"
+                />
+                <label for="viewChoice2">
+                  <font-awesome-icon :icon="largeIcon"
+                /></label>
+              </div>
+            </div>
+            <div class="vacancies-sort-item">
+              <input
+                @change="filterChange"
+                v-model="remote"
+                type="checkbox"
+                id="remote"
+                name="remote"
+                value="remote"
+              />
+              <label for="remote" class="sort-item-title">
+                <span></span>
+                удаленно
+              </label>
+            </div>
+            <div class="vacancies-sort-item">
+              <input
+                @change="filterChange"
+                v-model="no_experience"
+                type="checkbox"
+                id="no_experience"
+                name="no_experience"
+                value="no_experience"
+              />
+              <label for="no_experience" class="sort-item-title">
+                <span></span>
+                без опыта
+              </label>
+            </div>
+            <div class="vacancies-sort-item">
+              <div class="sort-item-title">дата публикации:</div>
+              <select v-model="selectedTime" @change="sortChange">
+                <option value="descendingTime">сначала новые</option>
+                <option value="ascendingTime">сначала старые</option>
+              </select>
+            </div>
+            <div class="vacancies-sort-item">
+              <div class="sort-item-title">заработная плата:</div>
+              <select v-model="selectedSalary" @change="sortChange">
+                <option value="descendingSalary">по убыванию</option>
+                <option value="ascendingSalary">по возрастанию</option>
+              </select>
+            </div>
           </div>
-          <div class="sort-item-radio">
-            <input
-              v-model="view"
-              type="radio"
-              id="viewChoice2"
-              name="view"
-              value="large"
-            />
-            <label for="viewChoice2"
-              ><font-awesome-icon :icon="largeIcon"
-            /></label>
+          <div class="vacancies">
+            <ItemsList :type="view" :sortedItems="sortedItems" />
           </div>
         </div>
-        <div class="vacancies-sort-item">
-          <input
-            @change="filterChange"
-            v-model="remote"
-            type="checkbox"
-            id="remote"
-            name="remote"
-            value="remote"
-          />
-          <label for="remote" class="sort-item-title"
-            ><span></span>
-            удаленно
-          </label>
-        </div>
-        <div class="vacancies-sort-item">
-          <input
-            @change="filterChange"
-            v-model="no_experience"
-            type="checkbox"
-            id="no_experience"
-            name="no_experience"
-            value="no_experience"
-          />
-          <label for="no_experience" class="sort-item-title"
-            ><span></span>
-            без опыта
-          </label>
-        </div>
-        <div class="vacancies-sort-item">
-          <div class="sort-item-title">дата публикации:</div>
-          <select v-model="selectedTime" @change="sortChange">
-            <option value="descendingTime">сначала новые</option>
-            <option value="ascendingTime">сначала старые</option>
-          </select>
-        </div>
-        <div class="vacancies-sort-item">
-          <div class="sort-item-title">заработная плата:</div>
-          <select v-model="selectedSalary" @change="sortChange">
-            <option value="descendingSalary">по убыванию</option>
-            <option value="ascendingSalary">по возрастанию</option>
-          </select>
-        </div>
-      </div>
-      <div class="vacancies">
-        <ItemsList :type="view" :sortedItems="sortedItems" />
       </div>
     </main>
     <Footer />

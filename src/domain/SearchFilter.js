@@ -1,10 +1,10 @@
-export class SearchFilter {
+class SearchFilter {
     constructor() {
         this.text = null;
         this.city = null;
         this.salary = null;
         this.profession = null;
-        this.count = 50;
+        this.count = 20;
         this.page = 1;
     }
     static byText(text) {
@@ -23,3 +23,5 @@ export class SearchFilter {
         return filter;            
     }
 }
+
+export const searchFilter = new SearchFilter();
