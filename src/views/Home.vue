@@ -1,12 +1,12 @@
 <template>
   <div class="container-main">
-    <header class="main-header">
+    <header class="header-main">
       <Header />
       <div class="container">
         <Search @scrollToVacancies="scrollToVacancies" />
-        <div class="tagline">
-          <h4 class="tagline-txt">Тысячи возможностей</h4>
-          <h4 class="tagline-txt">Выбери свою</h4>
+        <div class="header-main-title">
+          <h1 class="header-main-title__h1">Тысячи возможностей</h1>
+          <h2 class="header-main-title__h2">выбери свою</h2>
         </div>
       </div>
     </header>

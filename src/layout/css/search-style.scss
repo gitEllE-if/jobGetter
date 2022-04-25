@@ -1,0 +1,88 @@
+.search {
+    display: flex;
+    justify-content: center;
+    padding: 50px 30px 0;
+    font-family: 'raleway', 'arial', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    &__form {
+        display: flex;
+        height: 48px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    &__input {
+        height: inherit;
+        padding-left: 1em;
+        border: none;
+        outline: none;
+        width: 220px;
+        font-family: inherit;
+        font-size: 1em;
+    }
+    &__button {
+        height: inherit;
+        padding: 0 1em;
+        border: 0;
+        background: none;
+        margin-left: 1px;
+        background-color: $bright-color;
+        color: white;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 600;
+        &:hover {
+            cursor: pointer;
+            background-color: $bright-dark-color;
+        }
+    }
+    &__select {
+        margin-left: 1px;
+        height: inherit;
+        padding: 0 1em;
+        border: none;
+        outline: none;
+        width: 200px;
+        font-family: inherit;
+        font-size: 0.9em;
+        color: $dark-color;
+    }
+}
+
+@media (max-width: 850px) {
+    .search{
+        &__form {
+            width: 100%;
+        }
+        &__input{
+            width: 35%;
+        }
+        &__select{
+            width: 22%;
+        }
+        &__button{
+            width: 21%;
+        }
+    }
+}
+
+@media (max-width: 680px) {
+    .search{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 570px) {
+    .search{
+        &__input{
+            width: 70%;
+        }
+        &__select{
+            display: none;
+        }
+        &__button{
+            width: 30%;
+        }
+    }
+}

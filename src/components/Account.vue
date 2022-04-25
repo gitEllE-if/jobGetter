@@ -1,30 +1,30 @@
 <template>
   <div class="account">
-    <button class="account-button" @click="showAccount = !showAccount">
+    <button class="account__button" @click="showAccount = !showAccount">
       Login
     </button>
     <form ref="formLogin"></form>
-    <div class="dropAccount" v-show="showAccount">
-      <div class="dropAccount-name" v-show="user">
+    <div class="menu-drop" v-show="showAccount">
+      <div class="menu-drop-name" v-show="user">
         Welcome, You signed as:<span> {{ user }}</span>
       </div>
-      <div class="dropAccount-message" v-show="message">
+      <div class="menu-drop-message" v-show="message">
         {{ message }}
       </div>
-      <label class="dropAccount-label" for="login">Login</label>
-      <input name="login" type="text" v-model="login" />
-      <label class="dropAccount-label" for="password">Password</label>
-      <input name="password" type="password" v-model="password" />
-      <div class="dropAccount-buttons">
+      <label class="menu-drop__label" for="login">Login</label>
+      <input class="menu-drop__input" name="login" type="text" v-model="login" />
+      <label class="menu-drop__label" for="password">Password</label>
+      <input class="menu-drop__input" name="password" type="password" v-model="password" />
+      <div class="menu-drop__buttons">
         <button
-          class="account-button dropAccount-button"
+          class="account__button menu-drop__button"
           name="login"
           @click.prevent="loginRequest($event)"
         >
           Sign in
         </button>
         <button
-          class="account-button dropAccount-button"
+          class="account__button menu-drop__button"
           name="register"
           @click.prevent="loginRequest($event)"
         >
@@ -90,6 +90,3 @@ export default {
   }
 };
 </script>
-
-<style>
-</style>
