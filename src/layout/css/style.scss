@@ -59,7 +59,15 @@ header {
 
 .header-main {
     min-height: 50vh;
-    background: rgb(145, 185, 196) url("../../assets/img/bg_photo_11179.jpg") no-repeat bottom right/contain;
+    background-image: -webkit-image-set(
+        url("../../assets/img/bg_photo_11179.webp") 1x,
+        url("../../assets/img/bg_photo_11179x2.webp") 2x,
+        url("../../assets/img/bg_photo_11179.jpg") 2x
+    );
+    background-color: rgb(145, 185, 196);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: contain;
     display: flex;
     flex-direction: column;
     &-title {
