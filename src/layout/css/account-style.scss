@@ -1,0 +1,79 @@
+.account {
+    display: flex;
+    justify-content: flex-end;
+    font-family: 'montserrat', 'arial', sans-serif;
+    font-size: 14px;
+    &__button {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+        color: #ffffff;
+        outline: none;
+        cursor: pointer;
+        border: solid 1px #fff;
+        padding: 7px;
+        border-radius: 4px;
+        background-color: $dark-color;
+        &:hover { 
+            color: $light-color;
+            border-color: $light-color;
+        }
+    }
+}
+
+.menu-drop {
+    width: 240px;
+    border: 1px solid #e9e9e9;
+    background-color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    z-index: 10001;
+    padding: 1.4em 1.2em;
+    transition: 0.6s;
+    transition-delay: 0.2s;
+    box-shadow: 0.1rem 0.2rem 0.3rem 0 rgba(0, 0, 0, 0.16);
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__button {
+        width: 110px;
+    }
+    &__label {
+        color: #8c8c8c;
+        text-align: left;
+    }
+    &__input {
+        margin-bottom: 20px;
+    }
+    &-message {
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+    &-name {
+        margin-bottom: 10px;
+        & span {
+            margin-left: 5px;
+            font-weight: 700;
+            color: #8c8c8c;
+        }
+    }
+}
+
+@media (max-width: 540px) {
+    .account__button {
+        font-size: 12px;
+        padding: 2px 15px;
+        margin-top: 5px;
+    }
+    .menu-drop {
+        top: 30px;
+        right: 0;
+    }
+}
