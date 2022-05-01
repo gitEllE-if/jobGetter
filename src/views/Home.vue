@@ -12,14 +12,14 @@
     </header>
     <main>
       <div class="container">
-        <section class="profession-block">
-          <div class="profession-block-name">
-            <h2 class="profession-block-header">Работа по профессиям</h2>
-            <ul class="profession-block-multiple">
+        <section class="prof-city-list">
+          <div class="prof-list">
+            <h2 class="prof-city-list__h2">Работа по профессиям</h2>
+            <ul class="prof-city-list__ul">
               <li
                 v-for="prof in professionArr"
                 :key="prof.value"
-                class="profession-multiple-item"
+                class="prof-city-list__li"
               >
                 <a @click="selectProfession(prof.text)">
                   <span :class="{ selected: prof.selected }">{{
@@ -29,19 +29,19 @@
               </li>
             </ul>
             <button
-              class="profession-block-city-button"
+              class="prof-city-list__button"
               @click="resetProfession"
             >
               сбросить
             </button>
           </div>
-          <div class="profession-block-city">
-            <h2 class="profession-block-header">Работа в других городах</h2>
-            <ul class="profession-block-city-multiple">
+          <div class="city-list">
+            <h2 class="prof-city-list__h2">Работа в других городах</h2>
+            <ul class="prof-city-list__ul">
               <li
                 v-for="city in cityArr"
                 :key="city.value"
-                class="profession-multiple-item"
+                class="prof-city-list__li"
               >
                 <a @click="selectCity(city.text)">
                   <span :class="{ selected: city.selected }"
@@ -50,7 +50,7 @@
                 </a>
               </li>
             </ul>
-            <button class="profession-block-city-button" @click="resetCity">
+            <button class="prof-city-list__button" @click="resetCity">
               сбросить
             </button>
           </div>

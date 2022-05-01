@@ -7,11 +7,12 @@
       <div class="container">
         <div class="vacancies-list">
           <div class="vacancies-sort">
-            <div class="vacancies-sort-title">Фильтр вакансий</div>
-            <div class="vacancies-sort-item">
-              <div class="sort-item-radio">
+            <h2 class="vacancies-sort__h2">Фильтр вакансий</h2>
+            <div class="sort-item sort-item-row">
+              <div class="sort-item-block">
                 <input
                   v-model="view"
+                  class="sort-item__input"
                   type="radio"
                   id="viewChoice1"
                   name="view"
@@ -21,9 +22,10 @@
                   <font-awesome-icon :icon="smallIcon"
                 /></label>
               </div>
-              <div class="sort-item-radio">
+              <div class="sort-item-block">
                 <input
                   v-model="view"
+                  class="sort-item__input"
                   type="radio"
                   id="viewChoice2"
                   name="view"
@@ -34,44 +36,56 @@
                 /></label>
               </div>
             </div>
-            <div class="vacancies-sort-item">
-              <input
-                @change="filterChange"
-                v-model="remote"
-                type="checkbox"
-                id="remote"
-                name="remote"
-                value="remote"
-              />
-              <label for="remote" class="sort-item-title">
-                <span></span>
-                удаленно
-              </label>
+            <div class="sort-item">
+              <div class="sort-item-block">
+                <input
+                  @change="filterChange"
+                  v-model="remote"
+                  class="sort-item__input"
+                  type="checkbox"
+                  id="remote"
+                  name="remote"
+                  value="remote"
+                />
+                <label for="remote" class="sort-item__title">
+                  <span class="sort-item__span"></span>
+                  удаленно
+                </label>
+              </div>
+              <div class="sort-item-block">
+                <input
+                  @change="filterChange"
+                  v-model="no_experience"
+                  class="sort-item__input"
+                  type="checkbox"
+                  id="no_experience"
+                  name="no_experience"
+                  value="no_experience"
+                />
+                <label for="no_experience" class="sort-item__title">
+                  <span class="sort-item__span"></span>
+                  без опыта
+                </label>
+              </div>
             </div>
-            <div class="vacancies-sort-item">
-              <input
-                @change="filterChange"
-                v-model="no_experience"
-                type="checkbox"
-                id="no_experience"
-                name="no_experience"
-                value="no_experience"
-              />
-              <label for="no_experience" class="sort-item-title">
-                <span></span>
-                без опыта
-              </label>
-            </div>
-            <div class="vacancies-sort-item">
-              <div class="sort-item-title">дата публикации:</div>
-              <select v-model="selectedTime" @change="sortChange">
+            <div class="sort-item">
+              <div class="sort-item__title">дата публикации:</div>
+              <select
+                v-model="selectedTime"
+                @change="sortChange"
+                class="sort-item__select"
+              >
                 <option value="descendingTime">сначала новые</option>
                 <option value="ascendingTime">сначала старые</option>
               </select>
             </div>
-            <div class="vacancies-sort-item">
-              <div class="sort-item-title">заработная плата:</div>
-              <select v-model="selectedSalary" @change="sortChange">
+            <div class="sort-item">
+              <div class="sort-item__title">заработная плата:</div>
+              <select
+                v-model="selectedSalary"
+                @change="sortChange"
+                class="sort-item__select"
+              >
                 <option value="descendingSalary">по убыванию</option>
                 <option value="ascendingSalary">по возрастанию</option>
               </select>

@@ -1,88 +1,106 @@
 <template>
-  <div class="container">
+  <div class="container-main">
     <header>
       <Header />
     </header>
-    <main class="vacancies-list">
-      <div class="vacancies-sort">
-        <div class="vacancies-sort-title">Фильтр вакансий</div>
-        <div class="vacancies-sort-item">
-          <div class="sort-item-radio">
-            <input
-              v-model="view"
-              type="radio"
-              id="viewChoice1"
-              name="view"
-              value="small"
-            />
-            <label for="viewChoice1"
-              ><font-awesome-icon :icon="smallIcon"
-            /></label>
+    <main>
+      <div class="container">
+        <div class="vacancies-list">
+          <div class="vacancies-sort">
+            <h2 class="vacancies-sort__h2">Фильтр вакансий</h2>
+            <div class="sort-item sort-item-row">
+              <div class="sort-item-block">
+                <input
+                  v-model="view"
+                  class="sort-item__input"
+                  type="radio"
+                  id="viewChoice1"
+                  name="view"
+                  value="small"
+                />
+                <label for="viewChoice1">
+                  <font-awesome-icon :icon="smallIcon"
+                /></label>
+              </div>
+              <div class="sort-item-block">
+                <input
+                  v-model="view"
+                  class="sort-item__input"
+                  type="radio"
+                  id="viewChoice2"
+                  name="view"
+                  value="large"
+                />
+                <label for="viewChoice2">
+                  <font-awesome-icon :icon="largeIcon"
+                /></label>
+              </div>
+            </div>
+            <div class="sort-item">
+              <div class="sort-item-block">
+                <input
+                  @change="filterChange"
+                  v-model="remote"
+                  class="sort-item__input"
+                  type="checkbox"
+                  id="remote"
+                  name="remote"
+                  value="remote"
+                />
+                <label for="remote" class="sort-item__title"
+                  ><span></span>
+                  удаленно
+                </label>
+              </div>
+              <div class="sort-item-block">
+                <input
+                  @change="filterChange"
+                  v-model="no_experience"
+                  class="sort-item__input"
+                  type="checkbox"
+                  id="no_experience"
+                  name="no_experience"
+                  value="no_experience"
+                />
+                <label for="no_experience" class="sort-item__title"
+                  ><span></span>
+                  без опыта
+                </label>
+              </div>
+            </div>
+            <div class="sort-item">
+              <div class="sort-item__title">дата публикации:</div>
+              <select 
+                v-model="selectedTime"
+                @change="sortChange"
+                class="sort-item__select"
+              >
+                <option value="descendingTime">сначала новые</option>
+                <option value="ascendingTime">сначала старые</option>
+              </select>
+            </div>
+            <div class="sort-item">
+              <div class="sort-item__title">заработная плата:</div>
+              <select
+                v-model="selectedSalary"
+                @change="sortChange"
+                class="sort-item__select"
+              >
+                <option value="descendingSalary">по убыванию</option>
+                <option value="ascendingSalary">по возрастанию</option>
+              </select>
+            </div>
           </div>
-          <div class="sort-item-radio">
-            <input
-              v-model="view"
-              type="radio"
-              id="viewChoice2"
-              name="view"
-              value="large"
-            />
-            <label for="viewChoice2"
-              ><font-awesome-icon :icon="largeIcon"
-            /></label>
+          <div class="vacancies">
+            <div class="vacancies-list__title">
+              <h3>Избранные вакансии</h3>
+            </div>
+            <div v-if="!itemsFavorite.length" class="vacancies-empty">
+              вы еще не добавили ни одну вакансию в Избранное
+            </div>
+            <ItemsList :type="view" :sortedItems="sortedItems" :favorites="true" v-if="itemsFavorite.length"/>
           </div>
         </div>
-        <div class="vacancies-sort-item">
-          <input
-            @change="filterChange"
-            v-model="remote"
-            type="checkbox"
-            id="remote"
-            name="remote"
-            value="remote"
-          />
-          <label for="remote" class="sort-item-title"
-            ><span></span>
-            удаленно
-          </label>
-        </div>
-        <div class="vacancies-sort-item">
-          <input
-            @change="filterChange"
-            v-model="no_experience"
-            type="checkbox"
-            id="no_experience"
-            name="no_experience"
-            value="no_experience"
-          />
-          <label for="no_experience" class="sort-item-title"
-            ><span></span>
-            без опыта
-          </label>
-        </div>
-        <div class="vacancies-sort-item">
-          <div class="sort-item-title">дата публикации:</div>
-          <select v-model="selectedTime" @change="sortChange">
-            <option value="descendingTime">сначала новые</option>
-            <option value="ascendingTime">сначала старые</option>
-          </select>
-        </div>
-        <div class="vacancies-sort-item">
-          <div class="sort-item-title">заработная плата:</div>
-          <select v-model="selectedSalary" @change="sortChange">
-            <option value="descendingSalary">по убыванию</option>
-            <option value="ascendingSalary">по возрастанию</option>
-          </select>
-        </div>
-      </div>
-      <div class="vacancies">
-        <div class="vacancies-list-title">
-          <h3>Избранные вакансии</h3>
-        </div>
-        <div v-if="!itemsFavorite.length" class="vacancies-empty">
-          вы еще не добавили ни одну вакансию в Избранное
-        </div>
-        <ItemsList :type="view" :sortedItems="sortedItems" :favorites="true" v-if="itemsFavorite.length"/>
       </div>
     </main>
     <Footer />

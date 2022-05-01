@@ -145,6 +145,7 @@
     margin-bottom: 20px;
     color: #555555;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -190,6 +191,7 @@
     color: #eed6b9;
     margin-bottom: 20px;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .vacancy-area-large {
@@ -206,6 +208,7 @@
 .vacancy-bottom {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .vacancy-bottom .vacancy-url {
@@ -242,4 +245,33 @@
 
 .noexperience {
     background-color: #e0bc85;
+}
+
+@media (max-width: 580px) {
+    .vacancy-large {
+        margin: 10px 20px;
+    }
+    .vacancy-name-large {
+        flex-direction: column;
+    }
+    .vacancy-label {
+        margin: 10px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .vacancy-label-item {
+        margin: 0 10px 0 0;
+    }
+    .vacancy-salary {
+        font-size: 12px;
+        font-weight: 800;
+    }
+}
+
+@media (max-width: 350px) {
+    .vacancy-large .vacancy-logo {
+        width: 40px; 
+        height: 40px;
+        padding: initial;
+    }
 }
